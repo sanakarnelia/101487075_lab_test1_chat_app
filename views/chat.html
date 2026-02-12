@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Chat app</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="chat-shell">
+    <div class="chat-card">
+
+      <div class="chat-topbar">
+        <div class="title">Chat app</div>
+        <div class="actions">
+          <button class="small-btn" id="leaveBtn">Leave Room</button>
+          <button class="small-btn" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+
+      <div class="chat-grid">
+       
+        <div class="sidebar">
+          <div class="label">Room name:</div>
+          <div class="value" id="roomName">-</div>
+
+          <div class="label" style="margin-top:12px;">Members:</div>
+          <ul class="member-list" id="members"></ul>
+        </div>
+
+
+        <div class="chat-main">
+          <div class="messages" id="messages"></div>
+          <div class="typing" id="typing"></div>
+
+          <form class="input-row" id="msgForm">
+            <input id="msgInput" placeholder="Type your message here..." autocomplete="off" />
+            <button class="send-btn" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/chat-ui.js"></script>
+</body>
+</html>

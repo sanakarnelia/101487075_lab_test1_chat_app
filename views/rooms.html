@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Chat app - Join</title>
+
+  <!-- public css -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="card">
+
+      <div class="card-header">
+        Chat app
+      </div>
+
+      <div class="card-body">
+
+        <div class="form-group">
+          <label>Username</label>
+          <input id="username" placeholder="e.g., pritamworld" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Room</label>
+          <select id="room">
+            <option value="devops">devops</option>
+            <option value="cloud computing">cloud computing</option>
+            <option value="covid19">covid19</option>
+            <option value="sports">sports</option>
+            <option value="nodeJS">nodeJS</option>
+          </select>
+        </div>
+
+        <button class="btn" id="joinBtn">Join Chat Room</button>
+
+        <p class="msg" id="msg"></p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+
+    if (!user) {
+      window.location.href = "/login";
+    }
+
+    // show logged in username (read-only)
+    document.getElementById("username").value = user.username || "";
+
+    document.getElementById("joinBtn").onclick = () => {
+      const room = document.getElementById("room").value;
+
+      if (!room) {
+        document.getElementById("msg").innerText = "Please select a room.";
+        return;
+      }
+
+      localStorage.setItem("room", room);
+      window.location.href = "/chat";
+    };
+  </script>
+
+</body>
+</html>
